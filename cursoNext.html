@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso de React JS</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <h1>Curso de Next JS 16</h1>
+  <h2>Indice Tematico</h2>
+  <ul>
+    <li><a href="cursoNext.html#referencia">Referencias</a></li>
+    <li><a href="cursoNext.html#instalacion">Instalacion iniciales</a></li>
+    <li><a href="cursoNext.html#approuter">App Router</a></li>
+    <li><a href="cursoNext.html#layout">page.jsx y layout.js</a></li>
+  </ul>
+
+
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="referencia">Referencias</h2>
+  <article>
+    tutorial de Fazt <a href="https://www.youtube.com/watch?v=_SPoSMmN3ZU&t=158s" target="_blank"
+      rel="noopener noreferrer">NextJS</a> <br>
+    lo primero es crear el proyecto de NextJS : <br>
+    Tambien hay un curso de Next por Johanatan Mircha <a href="https://www.youtube.com/watch?v=r5fkL5_rB70&t=2681s"
+      target="_blank" rel="noopener noreferrer">Next por Johnatan Mircha</a> <br>
+    curso de NextJS en tres partes <a href="https://www.youtube.com/watch?v=c_DPfd85qTM" target="_blank"
+      rel="noopener noreferrer">NextJS por AnjrtoDev</a> <br>
+
+  </article>
+
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="Instalacion">Instalacion Inicial</h2>
+  <article>
+    para crear un proyecto de NextJS se realiza los siguientes pasos: <br>
+    <pre>
+      npx create-next-app@latest projnext1
+    </pre>
+    ejecutamos el proyecto de nextJS
+    <pre>
+      npm run dev
+    </pre>
+
+  </article>
+
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="approuter">App Router</h2>
+  <article>
+    Esta es la forma de enrutar utilizando carpetas, remplaza el uso de <strong>react-router-dom</strong> de react puro.
+    <br>
+
+  </article>
+
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="layout">Layout</h2>
+  <article>
+    el codigo del <strong>layout.js</strong> como minimo debe tener el siguiene codigo: <br>
+    <br>
+    <pre>
+      <code>
+        export const metadata = {
+          title: "Mi App",
+          description: "Descripción",
+        };
+        
+        export default function RootLayout({ children }) {
+          return (
+            &lt;html lang="es">
+              &lt;body>{children}&lt;/body>
+            &lt;/html>
+          );
+        }
+
+      </code>
+    </pre>
+    y el codigo de <strong>page.jsx</strong>basico seria: <br>
+    <pre>
+      <code>
+        export default function Home(){
+           return &lt;h1>Bienvenido&lt;/h1>
+        }        
+
+      </code>
+    </pre>
+  </article>
+
+
+</body>
+
+</html>
