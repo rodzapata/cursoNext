@@ -1,3 +1,4 @@
+import Navbar from "./navbar";
 export const metadata = {
   title: "Mi App",
   description: "Descripción",
@@ -6,7 +7,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
