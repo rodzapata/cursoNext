@@ -6,6 +6,7 @@ export default function Navbar() {
             <ul>
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/about">About</Link></li>
+                <li><Link href="/settings">Settings</Link></li>
             </ul>
         </nav>
     )

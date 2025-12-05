@@ -1,13 +1,23 @@
 import Navbar from "./navbar";
+import { Roboto } from "next/font/google"
+
 export const metadata = {
   title: "Mi App",
   description: "Descripción",
 };
 
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  styles: ["italic", "normal"],
+  subset: ["latin"]
+}
+
+)
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body>
+      <body className={roboto.className}>
         <Navbar />
         {children}
       </body>

@@ -19,6 +19,10 @@
     <li><a href="cursoNext.html#layout">page.jsx y layout.js</a></li>
     <li><a href="cursoNext.html#carpetas">manejo de carpetas</a></li>
     <li><a href="cursoNext.html#link">Link</a></li>
+    <li><a href="cursoNext.html#metadata">MetaData</a></li>
+    <li><a href="cursoNext.html#fuentes">Fuentes</a></li>
+    <li><a href="cursoNext.html#not-found">Not found</a></li>
+    <li><a href="cursoNext.html#rsp">Read Server Components</a></li>
   </ul>
 
 
@@ -33,7 +37,8 @@
       target="_blank" rel="noopener noreferrer">Next por Johnatan Mircha</a> <br>
     curso de NextJS en tres partes <a href="https://www.youtube.com/watch?v=c_DPfd85qTM" target="_blank"
       rel="noopener noreferrer">NextJS por AnjrtoDev</a> <br>
-      NextJS 16 + strapi 5 creado por midudev <a href="https://www.youtube.com/watch?v=VosHdPQr6nI" target="_blank" rel="noopener noreferrer">NextJs 16 + strapi</a>
+    NextJS 16 + strapi 5 creado por midudev <a href="https://www.youtube.com/watch?v=VosHdPQr6nI" target="_blank"
+      rel="noopener noreferrer">NextJs 16 + strapi</a>
 
   </article>
 
@@ -99,7 +104,15 @@
   <hr />
   <h2 id="carpetas">carpetas</h2>
   <article>
-    el nombre que le coloquemos a la carpeta por ejemlo <strong>about</strong> es el nombre de ruta que aparecerá en el navegador: <br>
+    el nombre que le coloquemos a la carpeta por ejemlo <strong>about</strong> es el nombre de ruta que aparecerá en el
+    navegador: <br>
+    Hay casos en el que manejar subcarpetas por ejemplo <strong>settings</strong> y dentro de esta vamos a tener 2
+    subcarpetas llamadas: <br>
+    <strong>users</strong> y <strong>roles</strong>, tambien podria haber recuperar contraseña, etc. <br>
+    Entoces necesitamos que todas las opciones que dependen de configuracion, tenga su propio
+    <strong>layout.jsx</strong> diferente al <strong>layot.jsx</strong> que <br>
+    envuelve todo. <br>
+
 
   </article>
 
@@ -107,9 +120,11 @@
   <hr />
   <h2 id="link">Link</h2>
   <article>
-    el <strong>link</strong> remplaza a <strong><a href="http://"></a></strong>, porque este recarga toda la pagina y el link si es reactivo, <br>
+    el <strong>link</strong> remplaza a <strong><a href="http://"></a></strong>, porque este recarga toda la pagina y el
+    link si es reactivo, <br>
     renderizando solo la parte del <strong>Link</strong> que cambia. <br>
-    el codigo en <strong>layout.js</strong> habria que importar <strong>next/link</strong> y cambiar la etiequeta <strong><a href=""></a></strong> por link: <br>
+    el codigo en <strong>layout.js</strong> habria que importar <strong>next/link</strong> y cambiar la etiequeta
+    <strong><a href=""></a></strong> por link: <br>
     <pre>
       <code>
 
@@ -137,7 +152,8 @@
 
       </code>
     </pre>
-    como podemos observar esta parte de navegacion la podemos hacer en un componente independiente y luego lo importamos desde el <strong>layout.jsx</strong> <br>
+    como podemos observar esta parte de navegacion la podemos hacer en un componente independiente y luego lo importamos
+    desde el <strong>layout.jsx</strong> <br>
     asi que crearemos un componente en la misma posicion llamada <strong>Navbar.jsx</strong> <br>
     <pre>
       <code>
@@ -178,6 +194,110 @@
         }
       </code>
     </pre>
+
+  </article>
+
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="metadata">Metadata</h2>
+  <article>
+    Metadata en Next.js es la forma oficial de configurar el SEO y la información del documento HTML para cada página o
+    layout. <br>
+    Sirve para: <br>
+
+    ✔ Título de la página <br>
+    ✔ Descripción SEO <br>
+    ✔ Palabras clave <br>
+    ✔ Favicon <br>
+    ✔ Open Graph (Facebook, WhatsApp, Instagram) <br>
+    ✔ Twitter Cards <br>
+    ✔ Robots <br>
+    ✔ Lenguaje <br>
+    ✔ Metadata dinámica según la ruta <br><br>
+
+    ejemplo: <br>
+    <pre>
+      <code>
+        export const metadata = {
+          title: "Mi App",
+          description: "Descripción",
+        };
+
+      </code>
+    </pre>
+
+  </article>
+
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="fuentes">Fuentes</h2>
+  <article>
+    todas las fuentes de <strong>google.com</strong> ya estan incluida en <strong>NextJS</strong>, lo unico que tenemos
+    que hacer es importarla <br>
+    por ejemplo en nuestro <strong>layout.jsx</strong> principal vamos importar la fuente <strong>roboto</strong> de la
+    siguiente forma: <br>
+    <pre>
+      <code>
+        import Navbar from "./navbar";
+        import { Roboto } from "next/font/google"
+        
+        export const metadata = {
+          title: "Mi App",
+          description: "Descripción",
+        };
+        
+        const roboto = Roboto({
+          weight: ["300", "400", "500", "700"],
+          styles: ["italic", "normal"],
+          subset: ["latin"]
+        }
+        
+        )
+        
+        export default function RootLayout({ children }) {
+          return (
+            &lt;html lang="es">
+              &lt;body className={roboto.className}>
+                &lt;Navbar />
+                {children}
+              &lt;/body>
+            &lt;/html>
+          );
+        }
+
+
+      </code>
+    </pre>
+  </article>
+
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="not-found">not found</h2>
+  <article>
+    dentro de la capeta principal <strong>/app</strong> crearmos una pagina <strong>not-found.jsx</strong> y colocamos el <br>
+    el siguiente codigo: <br>
+    <pre>
+      <code>
+
+        import Link from "next/link"
+        export default function NotFound() {
+            return (
+                &lt;>
+                    &lt;h1>pagina no encontrada -404&lt;/h1>
+                    &lt;p>Lo sentimos, la pagina que buscas no existe. &lt;/p>
+                    &lt;Link href="/">volver al inicio&lt;/Link>
+                &lt;/>
+            )
+        }
+
+      </code>
+    </pre>
+  </article>
+
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="rsp">React Server Components</h2>
+  <article>
 
   </article>
 
