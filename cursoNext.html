@@ -274,7 +274,8 @@
   <hr />
   <h2 id="not-found">not found</h2>
   <article>
-    dentro de la capeta principal <strong>/app</strong> crearmos una pagina <strong>not-found.jsx</strong> y colocamos el <br>
+    dentro de la capeta principal <strong>/app</strong> crearmos una pagina <strong>not-found.jsx</strong> y colocamos
+    el <br>
     el siguiente codigo: <br>
     <pre>
       <code>
@@ -298,6 +299,41 @@
   <hr />
   <h2 id="rsp">React Server Components</h2>
   <article>
+    consiste en que las paginas no se renderizar del lado del cliente sino del lado del servidor, si tenemos un
+    componente <br>
+    que necesita utilizar <strong>useState, useEffect, useContext, uso de eventos como : onClick, onChange,
+      etc.</strong> cuando esto ocurre tenemos que anteponerle a
+    nuestro componente <br>
+    la instruccion <strong>use client</strong> <br>
+    la idea es que si vamos a trabajar con <strong>fetch, </strong> usemos del lado del servidor. <br>
+
+    <pre>
+
+      En Next.js la regla de oro es:
+
+  ✅ Usa código del servidor (Server Components o Server Actions) cuando:
+
+  1. Necesitas acceder de forma segura a datos sensibles
+    Claves de API
+    Conexión directa a bases de datos (PostgreSQL, MySQL, MongoDB)
+    Tokens privados
+    Lógica que NO debe llegar al navegador
+
+  2. Necesitas cargar datos antes de renderizar la página
+    fetch() directo a una API
+    Consultas a la base de datos
+    Generar HTML listo para SEO
+
+  3. Quieres mejor performance y SEO
+    Server Components no envían JavaScript al cliente
+    Menos peso → más rápido
+    Perfecto para páginas de blogs, cursos, ecommerce, etc.
+
+  4. Operaciones pesadas
+    Procesamiento de archivos
+    Validaciones grandes
+    Cálculos que no deben ejecutarse en el navegador
+    </pre>
 
   </article>
 
