@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Curso de React JS</title>
+  <title>Curso de NextJS 16</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
@@ -23,6 +23,7 @@
     <li><a href="cursoNext.html#fuentes">Fuentes</a></li>
     <li><a href="cursoNext.html#not-found">Not found</a></li>
     <li><a href="cursoNext.html#rsp">Read Server Components</a></li>
+    <li><a href="cursoNext.html#fetch">Fetch Data</a></li>
   </ul>
 
 
@@ -301,7 +302,7 @@
   <article>
     consiste en que las paginas no se renderizar del lado del cliente sino del lado del servidor, si tenemos un
     componente <br>
-    que necesita utilizar <strong>useState, useEffect, useContext, uso de eventos como : onClick, onChange,
+    que necesita utilizar <strong>useState, useEffect, useContext, guardar en localstorage, uso de eventos como : onClick, onChange,
       etc.</strong> cuando esto ocurre tenemos que anteponerle a
     nuestro componente <br>
     la instruccion <strong>use client</strong> <br>
@@ -336,6 +337,114 @@
     </pre>
 
   </article>
+
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="fetch">Fetch Data</h2>
+  <article>
+      para consultar una api externa se puede realizar una funcion del lado del servidor, es mejor de react puro que solo se puede hacer del lado del cliente. <br>
+      por ejemplo vamos a crear un <strong>post</strong> que consulta una api externa vero lo vamos hacer sin <strong>fetch</strong> <br>
+      quedando el codigo de nuestro <strong>post.jsx</strong> asi: <br>
+      <pre>
+        <code>
+          async function LoadPosts() {
+            let ruta = "https://jsonplaceholder.typicode.com/posts"
+            const res = await fetch(ruta);
+            const data = await res.json();
+            return data;
+          
+          }
+          
+          
+          const Post = async () =&lt; {
+          
+            const posts = await LoadPosts();
+          
+            return (
+              &lt;div>
+                &lt;h1>Posts&lt;/h1>
+                {
+                  posts.map(post => (
+                    &lt;ul key={post.id}>;
+                      &lt;h3>{post.id} - {post.title}&lt;/h3>
+                      &lt;p>{post.body}&lt;/p>
+                    &lt;/ul>
+                  )
+                  )
+                }
+          
+              &lt;/div>
+            )
+          }
+          
+          export default Post          
+
+        </code>
+      </pre>
+      En caso que queremos agregar un boton y un evento <strong>onClick</strong> entonces tenemos que agregar un componente por separado <br>
+      para no solo agregar el <strong>"use client"</strong> donde necesitamos el botont. <br>
+      crearemos dentro de la carpeta <strong>components</strong> y el componente se llamará <strong>PostCard.jsx</strong> <br>
+      <pre>
+        <code>
+          
+          "use client"
+          export const PostCard = ({ post }) => {
+          
+            return (
+              &lt;div>
+                {
+          
+                  &lt;ul key={post.id}>
+                    &lt;h3>{post.id} - {post.title}&lt;/h3>
+                    &lt;p>{post.body}&lt;/p>
+                    &lt;button onClick={() => ( alert("click ejecutandose") )}>
+                      click
+                    &lt;/button>
+                  &lt;/ul>
+          
+                }
+              </div>
+            )
+          }
+          
+        </code>
+      </pre>
+      y nuestro <strong>post</strong> llamando al componente quedaria: <br>
+      <pre>
+        <code>
+          import { PostCard } from "../components/PostCard";
+          
+          async function LoadPosts() {
+            let ruta = "https://jsonplaceholder.typicode.com/posts"
+            const res = await fetch(ruta);
+            const data = await res.json();
+            return data;
+          
+          }
+          
+          const Post = async () => {
+            const posts = await LoadPosts();
+          
+            return (
+              &lt;div>
+                {
+                  posts.map((post) => (
+                    &lt;PostCard post={post} key={post.id}></PostCard>
+                  )
+                  )
+                }
+              &lt;/div>
+            )
+          }
+          
+          export default Post
+
+          
+        </code>
+      </pre>
+
+  </article>
+
 
 
 </body>
