@@ -6,6 +6,14 @@ async function LoadPosts() {
   const data = await res.json();
   return data;
 
+/*
+  await new Promise((resolve, reject) => {
+    setTimeout(() => { resolve("promesa resuelta") }, 4000);
+  }
+
+  )
+  */
+
 }
 
 const Post = async () => {

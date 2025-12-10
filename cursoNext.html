@@ -24,6 +24,8 @@
     <li><a href="cursoNext.html#not-found">Not found</a></li>
     <li><a href="cursoNext.html#rsp">Read Server Components</a></li>
     <li><a href="cursoNext.html#fetch">Fetch Data</a></li>
+    <li><a href="cursoNext.html#loading">loading page</a></li>
+    <li><a href="cursoNext.html#params">parametros (params)</a></li>
   </ul>
 
 
@@ -438,13 +440,52 @@
           }
           
           export default Post
-
-          
+         
         </code>
       </pre>
 
   </article>
 
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="loading">Loading Page</h2>
+  <article>
+    cuando nuestra pagina ejecuta un proceso que demora no queremos que el usuario piense que esta bloqueado, entonces lo que hacemos <br>
+    es crear una pagina que diga <strong>loading ...</strong> mientras se ejecuta el proceso asincronico. <br>
+    para simular que la respuesta se demora 4 segunto crearemos una promesa con el siguiente codigo : <br>
+    <pre>
+      <code>
+        await new Promise((resolve, reject) => {
+            setTimeout(() => { resolve("promesa resuelta") }, 4000);
+          }        
+        )
+      </code>
+    </pre>
+    ahora detro de la carpeta <strong>post</strong> crearemos el archivo <strong>loading.jsx</strong> con el siguiente codigo:
+    <pre>
+      <code>
+       
+        export default function loading() {
+          return (
+            <div>loading....</div>
+          )
+        }
+        
+      </code>
+    </pre>
+  </article>
+  
+  <a href="cursoNext.html">⏫</a>
+  <hr />
+  <h2 id="params">Parametros (params)</h2>
+  <article>
+    Se usa cuando se tiene rutas dinamicas que se para un valor como parametro por ejemplo : <br>
+    /posts/[id] <br>
+    /users/[userId] <br>
+    /products/[slug] <br><br>
+
+    
+  </article>
 
 
 </body>
