@@ -41,7 +41,12 @@
     curso de NextJS en tres partes <a href="https://www.youtube.com/watch?v=c_DPfd85qTM" target="_blank"
       rel="noopener noreferrer">NextJS por AnjrtoDev</a> <br>
     NextJS 16 + strapi 5 creado por midudev <a href="https://www.youtube.com/watch?v=VosHdPQr6nI" target="_blank"
-      rel="noopener noreferrer">NextJs 16 + strapi</a>
+      rel="noopener noreferrer">NextJs 16 + strapi</a> <br>
+    Este curso está actualizado y en ingles con buena pronunciacion <a href="https://www.youtube.com/watch?v=L5CsIkO5xv4" target="_blank" rel="noopener noreferrer">NextJS 16 FullStack Course - Build an Inventory Management Website</a>  <br>
+    por PedroTech. <br>
+    otro curso actualizado con la version 16 y tambien en ingles es <a href="https://www.youtube.com/watch?v=tI_Nt32_4wM" target="_blank" rel="noopener noreferrer">NextJS 16 por Ankita Kulmani</a> <br>
+
+
 
   </article>
 
@@ -480,11 +485,83 @@
   <h2 id="params">Parametros (params)</h2>
   <article>
     Se usa cuando se tiene rutas dinamicas que se para un valor como parametro por ejemplo : <br>
-    /posts/[id] <br>
+    /posts/[postId] <br>
     /users/[userId] <br>
     /products/[slug] <br><br>
 
-    
+  <strong>Nota: </strong>    
+  a partir de version 15 para recibir el parametros debe crearse un funcion asincronica y no una simple funcion, <br>
+  por eso era que generaba error mi codigo, entonces quedaria así:
+  <pre>
+    <code>
+      export default async function Page({ params }) {
+           const { postId } = await params; 
+          return (
+              &lt;>
+                  &lt;h2>Prueba {postId}&lt;/h2>
+              &lt;/>
+          )
+      }      
+
+    </code>
+  </pre>
+
+  Ahora queremos que cada vez que pase por parameto el <strong>postId</strong> llame a siguiente ruta : <br>
+  https://jsonplaceholder.typicode.com/posts/1, donde el numero 1 es el parametro que estamos pasando el codigo seria : <br>
+  <pre>
+    <code>
+      async function loadPost(id) {
+          const resp = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+          const data = await resp.json()
+          return data;
+      }
+      
+      
+      export default async function Page({ params }) {
+          const { postId } = await params;
+      
+          const post = await loadPost(postId);
+      
+          return (
+              &lt;>
+                  &lt;h2>post {postId} - {post.title}&lt;/h2>
+                  &lt;p>{post.body}&lt;/p>
+              &lt;/>
+          )
+      }
+    </code>
+  </pre>
+  Pero como la idea es no tener que estar teclando desde el navegador y la url con el Id conrrespondiente, entonces crearemos un link <br>
+  en <strong>postCard.jsx</strong> quedando el codigo de la siguiente forma: <br>
+  <pre>
+    <code>
+      "use client"
+      import Link from "next/link"
+      export const PostCard = ({ post }) => {
+      
+        return (
+          &lt;div>
+            {
+      
+              &lt;ul key={post.id}>
+      
+                &lt;Link href={`/post/${post.id}`}>
+                  &lt;h3>{post.id} - {post.title}&lt;/h3>
+                &lt;/Link>
+                &lt;p>{post.body}&lt;/p>
+                &lt;button onClick={() => { alert("click ejecutandose") }}>
+                  click
+                &lt;/button>
+              &lt;/ul>
+      
+            }
+          &lt;/div>
+        )
+      }
+
+      
+    </code>
+  </pre>
   </article>
 
 
