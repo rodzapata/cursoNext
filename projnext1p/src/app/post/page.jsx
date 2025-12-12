@@ -1,23 +1,21 @@
-import { PostCard } from "../components/PostCard";
+import  PostCard  from "../components/PostCard";
 
 
 async function LoadPosts() {
   let ruta = "https://jsonplaceholder.typicode.com/posts"
   const res = await fetch(ruta);
   const data = await res.json();
-  return data;
 
-/*
   await new Promise((resolve, reject) => {
     setTimeout(() => { resolve("promesa resuelta") }, 4000);
-  }
-
+    }
   )
-  */
+
+  return data;
 
 }
 
-const Post = async () => {
+export default async function Post() {
   const posts = await LoadPosts();
 
   return (
@@ -31,5 +29,3 @@ const Post = async () => {
     </div>
   )
 }
-
-export default Post

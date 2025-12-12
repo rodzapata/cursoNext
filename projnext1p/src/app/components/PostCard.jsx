@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
-export const PostCard = ({ post }) => {
+
+export default function  PostCard ({ post }) {
 
   return (
     <div>
