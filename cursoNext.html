@@ -54,7 +54,7 @@
 
   <a href="cursoNext.html">⏫</a>
   <hr />
-  <h2 id="Instalacion">Instalacion Inicial</h2>
+  <h2 id="instalacion">Instalacion Inicial</h2>
   <article>
     para crear un proyecto de NextJS se realiza los siguientes pasos: <br>
     <pre>
@@ -614,6 +614,32 @@
   <hr />
   <h2 id="stiles">stiles CSS and tailwind</h2>
   <article>
+    para instalar taiwind en nuestro proyecto debemos ejecutar: <br>
+    <pre>
+      <code>
+        npm install tailwindcss @tailwindcss/postcss postcss
+      </code>
+    </pre>
+    modificamos el <strong>postcss.config.mnjs</strong> asi: <br>
+    <pre>
+      <code>
+        const config = {
+          plugins: {
+            "@tailwindcss/postcss": {},
+          },
+        };
+        
+        export default config;
+        
+      </code>
+    </pre>
+    nuestro archivo <strong>global.css</strong> para trabajar con tailwind debe tener como minimo las
+    siguientes lineas : <br>
+    <pre>
+      <code>
+        @import "tailwindcss";
+      </code>
+    </pre>
 
   </article>
 
